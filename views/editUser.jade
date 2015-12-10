@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	h1= title
+		form#editUserForm(name="editUser", method="post", action="/updateUser/" + doc._id)
+			input#updateUsername(type="text", name="username", placeholder= doc.username)
+			input#updateEmail(type="text", name="email", placeholder= doc.email)
+			button#updateSubmit(type="submit") update
+	a(href="/userlist") cancel

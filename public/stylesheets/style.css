@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+#editButton {
+	margin-left: 10px;
+}
+
+#deleteButton {
+	margin-left: 10px;
+}
