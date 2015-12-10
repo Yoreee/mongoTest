@@ -10,7 +10,7 @@ router.get('/helloworld', function(req, res, next) {
 	var greeting = "Greetings world"
 	res.render('helloworld', {title: greeting})
 })
-
+//INDEX
 router.get('/userlist', function(req, res, next) {
 	var db = req.db;
 	var collection = db.get('usercollection');
@@ -20,11 +20,11 @@ router.get('/userlist', function(req, res, next) {
 		})
 	})
 })
-
+//NEW
 router.get('/newuser', function(req, res, next) {
 	res.render('newuser', {title: 'Add new user'});
 });
-
+//CREATE
 router.post('/adduser', function(req, res, next) {
 	var db = req.db;
 
@@ -44,7 +44,7 @@ router.post('/adduser', function(req, res, next) {
 		}
 	})
 })
-
+//EDIT
 router.get('/editUser/:id', function(req, res) {
 	var db = req.db;
 	var collection = db.get('usercollection')
@@ -57,8 +57,8 @@ router.get('/editUser/:id', function(req, res) {
 		}
 	})
 })
-
-router.post('/updateUser/:id', function(req, res) {
+//UPDATE
+router.put('/updateUser/:id', function(req, res) {
 	var db = req.db;
 	var collection = db.get('usercollection');
 	// console.log(req.body)
@@ -71,4 +71,18 @@ router.post('/updateUser/:id', function(req, res) {
 		}
 	})
 })
+//DELETE
+router.delete('/deleteUser/:id', function(req, res) {
+	var db = req.db;
+	var collection = db.get('usercollection');
+	console.log(req.params)
+	collection.remove({_id: req.params.id}, function(err) {
+		if (err) {
+			console.log(err)
+		} else {
+			res.redirect('/userlist')
+		}
+	})
+})
+
 module.exports = router;

@@ -8,4 +8,5 @@ block content
 			li
 				a(href="mailto:#{user.email}")= user.username
 				a#editButton(href="/editUser/" + user._id) Edit
-				a#deleteButton(href="/deleteUser/" + user._id) Delete
+				form(method="post" action="/deleteUser/" + user._id + "?_method=DELETE")
+					button#deleteButton(type="submit") delete
